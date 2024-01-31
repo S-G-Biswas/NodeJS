@@ -1,0 +1,25 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "Node Js Practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/S-G-Biswas/NodeJS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/S-G-Biswas/NodeJS/issues"
+  },
+  "homepage": "https://github.com/S-G-Biswas/NodeJS#readme",
+  "dependencies": {
+    "jsonfile": "^6.1.0",
+    "moment": "^2.30.1",
+    "simple-git": "^3.22.0"
+  }
+}
