@@ -7,7 +7,10 @@ app.use(express.json())
 app.use("/users",userRouter)
 
 app.get("/", (req,res)=>{
-    res.send({"msg":"This is home Page"})
+  res.header("Content-type","text/html")
+  res.send("<h1>This is Home Page</h1>")  
+  
+  //res.send({"msg":"This is home Page"})
 })
 
 
