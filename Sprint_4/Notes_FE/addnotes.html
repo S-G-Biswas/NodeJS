@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+</head>
+<body>
+    <h2>Add notes</h2>
+    <input type="text" placeholder="enter title" id="title">
+    <br>
+    <input type="text" placeholder="enter body" id="body">
+    <br>
+    <button onclick="handleAdd()">Add</button>
+    
+</body>
+</html>
+
+<script>
+    const handleAdd=()=>{
+        let title = document.getElementById("title").value
+        let body = document.getElementById("body").value
+
+        const payload ={
+            title,
+            body
+        }
+        // console.log(payload);
+        //https://notes-app-be-k2hl.onrender.com
+        //https://tiny-rose-barnacle-hose.cyclic.app/notes
+        fetch("",{
+            method:"POST",
+            headers:{
+                "Content-type":"application/json",
+                authorization:`Bearer ${localStorage.getItem("token")}`
+            },
+              body:JSON.stringify(payload)
+        }).then(res => res.json())
+          .then(data => {
+            console.log(data)
+            localStorage.setItem("token",data.token)
+          })
+          .catch(err =>console.log(err))
+          window.location.href="notes.html"
+    }
+</script>
