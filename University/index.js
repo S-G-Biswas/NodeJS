@@ -19,47 +19,12 @@ const db = mysql.createConnection({
 db.connect();
 
 app.post('/search', (req, res) => {
-  const country = req.body.country || 'India';
-  const query = `SELECT * FROM universities WHERE country = '${country}'`;
+  const { universityName } = req.body;
+  const query = `SELECT * FROM universities WHERE name LIKE '%${universityName}%'`;
 
   db.query(query, (error, results) => {
-    if (error){
-      throw error;
-    }
-    else{
-      res.json(results);
-    }
-    
-  });
-});
-
-app.post('/favorites', (req, res) => {
-  const { id, name, stateProvince, webPages } = req.body;
-
-  const query = `INSERT INTO favorites (id, name, state_province, web_pages) VALUES ('${id}', '${name}', '${stateProvince}', '${webPages}')`;
-
-  db.query(query, (error) => {
-    if (error){
-      throw error;
-    }
-    else{
-      res.json({ success: true });
-    } 
-    
-  });
-});
-
-app.get('/api/favorites', (req, res) => {
-  const query = 'SELECT * FROM favorites';
-
-  db.query(query, (error, results) => {
-    if (error){
-      throw error;
-    }
-    else{
-      res.json(results);
-    }
-    
+    if (error) throw error;
+    res.json(results);
   });
 });
 
