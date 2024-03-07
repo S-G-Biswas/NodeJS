@@ -7,7 +7,7 @@ export default function Search(){
 
   const searchUniversities = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/search', {
+      const response = await axios.post('http://localhost:5000/search', {
         country: 'India',
       });
       setUniversities(response.data);
@@ -18,7 +18,7 @@ export default function Search(){
 
   const addToFavorites = async (university) => {
     try {
-      await axios.post('http://localhost:5000/api/favorites', university);
+      await axios.post('http://localhost:5000/favorites', university);
       setFavorites([...favorites, university]);
     } catch (error) {
       console.error('Error adding to favorites:', error);
@@ -42,10 +42,10 @@ export default function Search(){
           {universities.map((university) => (
             <tr key={university.id}>
               <td>{university.name}</td>
-              <td>{university.state_province}</td>
+              <td>{university.state}</td>
               <td>
-                <a href={university.web_pages} target="_blank" rel="noopener noreferrer">
-                  {university.web_pages}
+                <a href={university.website} target="_blank" rel="web">
+                  {university.website}
                 </a>
               </td>
               <td>

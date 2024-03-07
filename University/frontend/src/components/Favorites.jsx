@@ -6,7 +6,7 @@ export default function Favorites(){
   
     const getFavorites = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/favorites');
+        const response = await axios.get('http://localhost:5000/favorites');
         setFavorites(response.data);
       } catch (error) {
         console.error('Error fetching favorites:', error);
@@ -20,9 +20,9 @@ export default function Favorites(){
         <ul>
           {favorites.map((favorite) => (
             <li key={favorite.id}>
-              {favorite.name} - {favorite.state_province} -{' '}
-              <a href={favorite.web_pages} target="_blank" rel="noopener noreferrer">
-                {favorite.web_pages}
+              {favorite.name} - {favorite.state} -{' '}
+              <a href={favorite.website} target="_blank" rel="web">
+                {favorite.website}
               </a>
             </li>
           ))}
