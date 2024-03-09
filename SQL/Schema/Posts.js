@@ -1,5 +1,5 @@
 const {DataTypes} = require("sequelize");
-const {sequelize} = require("./index");
+const {sequelize} = require("./connection");
 const Posts = sequelize.define("posts",{
     content: {
         type:DataTypes.STRING,

@@ -1,5 +1,5 @@
 const {DataTypes} = require("sequelize");
-const {sequelize} = require("./index")
+const {sequelize} = require("./connection")
 //Model -- Table
 const User =sequelize.define("users",{
     name:DataTypes.STRING,

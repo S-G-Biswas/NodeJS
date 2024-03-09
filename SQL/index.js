@@ -1,6 +1,5 @@
 const express= require("express");
-const { Sequelize, DataTypes } = require('sequelize');
-const { sequelize } = require("./Schema");
+const { connection } = require("./Schema/connection");
 const { User } = require("./Schema/Users");
 const { Posts } = require("./Schema/Posts");
 const app = express();
@@ -112,9 +111,13 @@ app.patch("/users/:id", async(req,res) =>{
 
 
 //Connection
-sequelize.sync().then (() =>{
-    app.listen(3001,()=>{
-        console.log("server started");
-    });
-});
+// sequelize.sync().then (() =>{
+//     app.listen(3001,()=>{
+//         console.log("server started");
+//     });
+// });
+
+app.listen(3001,() =>{
+    console.log("Running at 3001");
+})
 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+</head>
+<body>
+    <h2>Login Form</h2>
+    <input type="text" placeholder="enter email" id="email">
+    <br>
+    <input type="text" placeholder="enter password" id="password">
+    <br>
+    <button onclick="handleLogin()">Submit</button>
+    
+</body>
+</html>
+
+<script>
+    const handleLogin=()=>{
+        let email = document.getElementById("email").value
+        let password = document.getElementById("password").value
+
+        const payload ={
+            email,
+            password
+        }
+        // console.log(payload);
+        //https://notes-app-be-k2hl.onrender.com
+        // try another deployed api
+        fetch("https://tiny-rose-barnacle-hose.cyclic.app/users/login",{
+            method:"POST",
+            headers:{
+                "Content-type":"application/json"
+            },
+              body:JSON.stringify(payload)
+        }).then(res => res.json())
+          .then(data => {
+            console.log(data)
+            localStorage.setItem("token",data.token)
+          })
+          .catch(err =>console.log(err))
+          window.location.href="notes.html"
+    }
+</script>
